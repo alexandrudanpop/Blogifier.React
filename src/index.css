@@ -4,20 +4,42 @@ body {
   font-family: sans-serif;
 }
 
-.post {
-  padding: 15px 0px;
-  border-bottom: 1px dotted #ccc;
-}
-
 img {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
+ /* todo move to post specific css file  */
+.post {
+  padding: 15px 0px;
+  border-bottom: 1px dotted #ccc;
+}
+
+.post:first-of-type {padding-top: 0px;}
+
 .feat-img img {
   padding: 5px; 
   border: 1px solid #ccc;
 }
 
-.post:first-of-type {padding-top: 0px;}
+a.nav-link:link
+{
+   /* color: #fb3f00; */
+   text-decoration: none;
+}
+a.nav-link:visited
+{
+   /* color: #fb3f00; */
+   text-decoration: none;
+}
+a.nav-link:hover
+{
+   /* color: #fb3f00; */
+   text-decoration: none;
+}
+a.nav-link:active
+{
+   /* color: #fb3f00; */
+   text-decoration: none;
+}

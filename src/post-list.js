@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import './index.css';
 
 export default class PostList extends Component {
@@ -32,16 +33,23 @@ export default class PostList extends Component {
                   <div className='post' key={p.blogPostId}>
                     <div className='row'>
                       <div className='feat-img col-md-6'>
-                        <img className='img-responsive'
-                          src={this.api + p.image}
-                          title={p.title} />
+                        <Link className='nav-link' to={'/post/' + p.title} >
+                          <img className='img-responsive'
+                            src={this.api + p.image}
+                            title={p.title} />
+                        </Link>
                       </div>
-
                       <div className='details col-md-6'>
-                        <h2> {p.title} </h2>
+                        <h2
+                        ><Link className='nav-link' to={'/post/' + p.title} > {p.title} </Link>
+                        </h2>
                         <p>{p.content} </p>
-                        <button className='btn pull-right'> Read More! </button>
-                      </div>      
+                        <button className='btn pull-right'>
+                          <Link className='nav-link' to={'/post/' + p.title} > Read More!
+                          </Link>
+                        </button>
+
+                      </div>
                     </div>
                   </div>
                 )
