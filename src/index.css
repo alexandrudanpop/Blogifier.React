@@ -29,6 +29,11 @@ img {
   }
 }
 
+.post-single .post-content {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
 .page-cover {
   padding: 10rem 0 3rem;
   position: relative;
@@ -36,6 +41,7 @@ img {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  text-align: center;
 }
 
 .page-cover .container {

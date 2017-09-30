@@ -80,9 +80,10 @@ export default class Post extends Component {
           {/* {this.props.id}
         {this.props.title}
         {this.props.content} */}
+        <div className='post-content container'>
           <div id='fullPostContent'> </div>
           {this.renderFullPost()}
-
+        </div>
       </article>
     )
   }
