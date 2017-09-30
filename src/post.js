@@ -42,21 +42,48 @@ export default class Post extends Component {
 
     return (
       <div className='centered'>
-        <Spinner name="ball-scale-ripple" color="blue" fadeIn='half'/>
+        <Spinner name="ball-scale-ripple" color="blue" fadeIn='half' />
       </div>
     )
   }
 
   render() {
+    const headerStyle = {
+      backgroundImage: `url(${this.api + this.props.post.image})`
+    }
+
     return (
-      <div>
-        {/* {this.props.post.blogPostId} */}
-        {/* {this.props.id}
+      <article className='post-single'>
+        <header className='page-cover post-header' style={headerStyle} >
+        <section className="container">
+            <h2 className="post-title">{this.props.post.title}</h2>
+            <div className="post-meta">
+                <a href="/blog/lex">
+                    {/* todo commented out because looks crappy */}
+                    {/* <img className="post-meta-img" src={this.api+ this.props.post.avatar} alt={this.props.post.authorName}/> */}
+                    <span className="post-meta-author">{this.props.post.authorName}</span>
+                </a>
+                <br/ >
+                <time className="post-meta-time">{this.props.post.published}</time>
+                
+                {/* todo add categories */}
+                {/* <span className="post-meta-category">
+                    in
+                            <a href="/blog/lex/asp-net-core">ASP NET Core</a>
+                            <a href="/blog/lex/c">C#</a>
+                </span> */}
+            </div>
+        </section>
+        </header>
+
+          {/* {this.props.post.blogPostId} */}
+          {/* {this.props.id}
         {this.props.title}
         {this.props.content} */}
-        <div id='fullPostContent'> </div>
-        {this.renderFullPost()}
-      </div>
+          <div id='fullPostContent'> </div>
+          {this.renderFullPost()}
+
+      </article>
     )
   }
 }
