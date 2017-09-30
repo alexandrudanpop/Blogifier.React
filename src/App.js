@@ -36,10 +36,14 @@ class App extends Component {
     if (this.state.data) {
       return (
         <div>
-          <Route path='/' exact render={() =>
+          <Route 
+            path='/' exact 
+            render={() =>
             <BlogsContainer data={this.state.data} />}
           />
-          <Route path='/post/:title' render={({ match }) =>
+          <Route
+            path='/post/:title' 
+            render={({ match }) =>
             <Post 
               post={this.state.data.posts.find(p => p.title === match.params.title)} 
               storedPosts={this.state.storedPosts}

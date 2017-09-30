@@ -12,6 +12,7 @@ export default class Post extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0)
     // if found in store do not make api call
     const foundPost = this.props.storedPosts.find(sp => sp.id === this.props.post.slug)
     if(foundPost) {
