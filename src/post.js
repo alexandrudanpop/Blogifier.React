@@ -12,12 +12,19 @@ export default class Post extends Component {
   }
 
   componentDidMount() {
-    // todo - after loading a post set it in state so don't load twice on next navigation
+    // if found in store do not make api call
+    const foundPost = this.props.storedPosts.find(sp => sp.id === this.props.post.slug)
+    if(foundPost) {
+      this.setState({ fullpost: foundPost.post })
+      return
+    }
+
     fetch(this.api + "/blogifier/api/public/posts/post/" + this.props.post.slug)
       .then(response => response.json())
       .then(data => {
         console.log(data)
         this.setState({ fullpost: data })
+        this.props.addPostToStore({id: this.props.post.slug, post: data})
       })
       .catch(err => {
         console.log(err)
@@ -31,6 +38,7 @@ export default class Post extends Component {
       return 
     }
 
+    /* todo replace with spinner */
     return (
       <div> Loading post... </div>
     )

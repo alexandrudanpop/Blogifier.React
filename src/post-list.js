@@ -36,7 +36,8 @@ export default class PostList extends Component {
                         <Link className='nav-link' to={'/post/' + p.title} >
                           <img className='img-responsive'
                             src={this.api + p.image}
-                            title={p.title} />
+                            title={p.title} 
+                            alt={p.title}/>
                         </Link>
                       </div>
                       <div className='details col-md-6'>

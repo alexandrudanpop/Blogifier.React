@@ -14,7 +14,8 @@ class App extends Component {
 
     this.state = {
       data: null,
-      error: null
+      error: null,
+      storedPosts: []
     }
   }
 
@@ -39,12 +40,28 @@ class App extends Component {
             <BlogsContainer data={this.state.data} />}
           />
           <Route path='/post/:title' render={({ match }) =>
-            <Post post={this.state.data.posts.find(p => p.title === match.params.title)} />}
+            <Post 
+              post={this.state.data.posts.find(p => p.title === match.params.title)} 
+              storedPosts={this.state.storedPosts}
+              addPostToStore={this.addPostToStore.bind(this)}
+            />}
           />
         </div>
       )
     }
     return <div> </div>
+  }
+
+  addPostToStore(newPost) {
+    if (!newPost){
+      return
+    }
+
+    if (!this.state.storedPosts.find(p => p.id === newPost.id)){
+      let storedPostsCopy = [...this.state.storedPosts]
+      storedPostsCopy.push(newPost)
+      this.setState({ storedPosts: storedPostsCopy })
+    } 
   }
 
   render() {
