@@ -37,40 +37,40 @@ class App extends Component {
     if (this.state.data) {
       return (
         <div>
-          <Route 
-            path='/' exact 
+          <Route
+            path='/' exact
             render={() =>
-            <BlogsContainer data={this.state.data} />}
+              <BlogsContainer data={this.state.data} />}
           />
           <Route
-            path='/post/:title' 
+            path='/post/:title'
             render={({ match }) =>
-            <Post 
-              post={this.state.data.posts.find(p => p.title === match.params.title)} 
-              storedPosts={this.state.storedPosts}
-              addPostToStore={this.addPostToStore.bind(this)}
-            />}
+              <Post
+                post={this.state.data.posts.find(p => p.title === match.params.title)}
+                storedPosts={this.state.storedPosts}
+                addPostToStore={this.addPostToStore.bind(this)}
+              />}
           />
         </div>
       )
     }
-    return(
+    return (
       <div className='centered'>
-        <Spinner name="ball-scale-ripple" color="blue" fadeIn='half'/>
+        <Spinner name="ball-scale-ripple" color="blue" fadeIn='half' />
       </div>
     )
   }
 
   addPostToStore(newPost) {
-    if (!newPost){
+    if (!newPost) {
       return
     }
 
-    if (!this.state.storedPosts.find(p => p.id === newPost.id)){
+    if (!this.state.storedPosts.find(p => p.id === newPost.id)) {
       let storedPostsCopy = [...this.state.storedPosts]
       storedPostsCopy.push(newPost)
       this.setState({ storedPosts: storedPostsCopy })
-    } 
+    }
   }
 
   render() {
@@ -78,11 +78,10 @@ class App extends Component {
       <Router>
         <div className="App">
           <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            {/*todo configurable blog name*/}
-            <h2>Blogifier</h2>
+            {/* <img src={logo} className="App-logo" alt="logo" /> */}
+            <h2>{this.state.data ? this.state.data.pageTitle : 'Welcome!'}</h2>
+            <h4>{this.state.data ? this.state.data.pageDescription : null} </h4>
           </div>
-          <br />
           {this.createRoutes()}
         </div>
       </Router>
