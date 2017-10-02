@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Spinner from 'react-spinkit'
-import logo from './logo.svg';
 import './App.css';
 
 import BlogsContainer from './blogs-container';
@@ -25,11 +24,11 @@ class App extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        this.setState({ data: data })
+        this.setState({ data: data, error: null })
       })
       .catch(err => {
         console.log(err)
-        this.setState({ error: err })
+        this.setState({ error: '¯\\_(ツ)_/¯ Ups.. Something went wrong.' })
       })
   }
 
@@ -75,13 +74,23 @@ class App extends Component {
 
   render() {
     return (
+      // todo move Blogs code and routes to BlogsContainer
       <Router>
         <div className="App">
           <div className="App-header">
-            {/* <img src={logo} className="App-logo" alt="logo" /> */}
             <h2>{this.state.data ? this.state.data.pageTitle : 'Welcome!'}</h2>
             <h4>{this.state.data ? this.state.data.pageDescription : null} </h4>
           </div>
+          {this.state.error
+            ?
+            <div className='alert alert-danger alert-dismissable fade in'>
+            <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <div className='error'>
+                {this.state.error}
+              </div>
+            </div>
+            : null}
+
           {this.createRoutes()}
         </div>
       </Router>
