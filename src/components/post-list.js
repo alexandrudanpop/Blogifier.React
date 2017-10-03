@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import './post.css'
 
 export default class PostList extends Component {
   constructor(props) {
@@ -11,18 +12,6 @@ export default class PostList extends Component {
   render() {
     return (
       <div className='container'>
-
-        {/* ----------  carousel not sure if needed yet ------------- */}
-        {/*<div id='myCarousel' className='carousel slide'>
-          <div className='carousel-inner'>
-            <div className='active item'> <img src={this.api + this.props.posts[0].avatar} alt='img' />  </div>
-            <div className='item'> <img src={this.api + this.props.posts[1].avatar} alt='img' />  </div>
-            <div className='item'> <img src={this.api + this.props.posts[2].avatar} alt='img' />  </div>
-          </div>
-          <a className='carousel-control left' href='myCarousel' data-slide='prev'>&lsaquo;</a>
-          <a className='carousel-control right' href='myCarousel' data-slide='next'>&rsaquo;</a>
-        </div>*/}
-
         <div className='row'>
           <div className='col-md-12'>
             {this.props.posts
