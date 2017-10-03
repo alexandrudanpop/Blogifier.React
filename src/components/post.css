@@ -1,0 +1,110 @@
+
+.post {
+  padding: 15px 0px;
+  border-bottom: 1px dotted #ccc;
+}
+
+.post:first-of-type {padding-top: 0px;}
+
+.post-single {
+  border-bottom: 1px solid #f8f8f8;
+}
+
+@media screen and (max-width: 57rem) {
+  .post-single .post-header {
+      padding: 3rem 5rem;
+  }
+}
+
+.post-single .post-content {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.page-cover {
+  padding: 10rem 0 3rem;
+  position: relative;
+  color: #fff;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+
+.page-cover .container {
+  position: relative;
+  z-index: 20;
+}
+
+@media screen and (max-width: 57rem) {
+  .page-cover {
+      padding: 3rem 0;
+      text-align: center;
+  }
+}
+
+.post-single .post-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+@media screen and (max-width: 57rem){
+  .post-single .post-title {
+      font-size: 2rem;
+  }
+}
+
+.post-single .post-meta {
+  padding: .375rem 0 0 3.75rem;
+  min-height: 3rem;
+  position: relative;
+  font-size: 1rem;
+  color: #888;
+  line-height: 1.125;
+}
+
+@media screen and (max-width: 57rem){
+  .post-single .post-meta {
+      padding: 0;
+  }
+}
+
+.post-single .post-meta a {
+  color: #888;
+}
+
+.post-single .post-meta-time {
+  font-size: .875rem;
+}
+
+.post-single .post-meta-category {
+  font-size: .875rem;
+}
+
+.feat-img img {
+  padding: 5px; 
+  border: 1px solid #ccc;
+}
+
+a.nav-link:link
+{
+   /* color: #fb3f00; */
+   text-decoration: none;
+}
+a.nav-link:visited
+{
+   /* color: #fb3f00; */
+   text-decoration: none;
+}
+a.nav-link:hover
+{
+   /* color: #fb3f00; */
+   text-decoration: none;
+}
+a.nav-link:active
+{
+   /* color: #fb3f00; */
+   text-decoration: none;
+}
