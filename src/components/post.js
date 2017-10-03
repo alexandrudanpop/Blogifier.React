@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import Spinner from 'react-spinkit'
 
+import Config from '../lib/config'
+
 export default class Post extends Component {
   constructor(props) {
     super(props)
-
-    this.api = 'http://localhost:8228'
 
     this.state = {
       fullpost: null
@@ -21,7 +21,7 @@ export default class Post extends Component {
       return
     }
 
-    fetch(this.api + "/blogifier/api/public/posts/post/" + this.props.post.slug)
+    fetch(Config.api + "/blogifier/api/public/posts/post/" + this.props.post.slug)
       .then(response => response.json())
       .then(data => {
         console.log(data)
@@ -49,7 +49,7 @@ export default class Post extends Component {
 
   render() {
     const headerStyle = {
-      backgroundImage: `url(${this.api + this.props.post.image})`
+      backgroundImage: `url(${Config.api + this.props.post.image})`
     }
 
     return (
@@ -60,7 +60,7 @@ export default class Post extends Component {
             <div className="post-meta">
                 <a href="/blog/lex">
                     {/* todo commented out because looks crappy */}
-                    {/* <img className="post-meta-img" src={this.api+ this.props.post.avatar} alt={this.props.post.authorName}/> */}
+                    {/* <img className="post-meta-img" src={Config.api+ this.props.post.avatar} alt={this.props.post.authorName}/> */}
                     <span className="post-meta-author">{this.props.post.authorName}</span>
                 </a>
                 <br/ >

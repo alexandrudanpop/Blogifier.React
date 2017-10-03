@@ -3,14 +3,14 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Spinner from 'react-spinkit'
 import './App.css';
 
+import Config from './lib/config'
+
 import PostList from './components/post-list';
 import Post from './components/post'
 
 class App extends Component {
   constructor(props) {
     super(props)
-
-    this.api = 'http://localhost:8228'
 
     this.state = {
       data: null,
@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(this.api + "/blogifier/api/public/posts")
+    fetch(Config.api + "/blogifier/api/public/posts")
       .then(response => response.json())
       .then(data => {
         console.log(data)
@@ -83,7 +83,7 @@ class App extends Component {
           {this.state.error
             ?
             <div className='alert alert-danger alert-dismissable fade in'>
-            <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <a href="" className="close" data-dismiss="alert" aria-label="close">&times;</a>
               <div className='error'>
                 {this.state.error}
               </div>

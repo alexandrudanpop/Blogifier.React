@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import './post.css'
 
+import Config from '../lib/config'
+
 export default class PostList extends Component {
-  constructor(props) {
-    super(props)
-
-    this.api = 'http://localhost:8228'
-  }
-
   render() {
     return (
       <div className='container'>
@@ -23,7 +19,7 @@ export default class PostList extends Component {
                       <div className='feat-img col-md-6'>
                         <Link className='nav-link' to={'/post/' + p.title} >
                           <img className='img-responsive'
-                            src={this.api + p.image}
+                            src={Config.api + p.image}
                             title={p.title} 
                             alt={p.title}/>
                         </Link>
