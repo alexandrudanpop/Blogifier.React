@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Spinner from 'react-spinkit'
 import './App.css';
 
-import PostsContainer from './components/posts-container';
+import PostList from './components/post-list';
 import Post from './components/post'
 
 class App extends Component {
@@ -39,7 +39,7 @@ class App extends Component {
           <Route
             path='/' exact
             render={() =>
-              <PostsContainer data={this.state.data} />}
+              <PostList posts={this.state.data.posts} />}
           />
           <Route
             path='/post/:title'
@@ -74,7 +74,6 @@ class App extends Component {
 
   render() {
     return (
-      // todo move Blogs code and routes to BlogsContainer
       <Router>
         <div className="App">
           <div className="App-header">
