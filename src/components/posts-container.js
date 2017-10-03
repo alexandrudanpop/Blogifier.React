@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PostList from './post-list'
 
-export default class BlogsContainer extends Component {
+export default class PostsContainer extends Component {
   render() {
     return (
       <div>
