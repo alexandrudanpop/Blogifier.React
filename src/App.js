@@ -76,20 +76,21 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <div className="App-header">
-            <h2>{this.state.data ? this.state.data.pageTitle : 'Welcome!'}</h2>
-            <h4>{this.state.data ? this.state.data.pageDescription : null} </h4>
+          <div className="page-header text-center">
+            <h1>{this.state.data ? this.state.data.pageTitle : 'Welcome!'}
+              <br />
+              <small>{this.state.data ? ' ' + this.state.data.pageDescription : null}</small>
+            </h1>
           </div>
           {this.state.error
             ?
             <div className='alert alert-danger alert-dismissable fade in'>
-            <a href="" className="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <a href="" className="close" data-dismiss="alert" aria-label="close">&times;</a>
               <div className='error'>
                 {this.state.error}
               </div>
             </div>
             : null}
-
           {this.createRoutes()}
         </div>
       </Router>

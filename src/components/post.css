@@ -90,21 +90,21 @@
 
 a.nav-link:link
 {
-   /* color: #fb3f00; */
+   color: #337ab7;
    text-decoration: none;
 }
 a.nav-link:visited
 {
-   /* color: #fb3f00; */
+   color: #337ab7;
    text-decoration: none;
 }
 a.nav-link:hover
 {
-   /* color: #fb3f00; */
+   color: #337ab7;
    text-decoration: none;
 }
 a.nav-link:active
 {
-   /* color: #fb3f00; */
+   color: #337ab7;
    text-decoration: none;
 }
