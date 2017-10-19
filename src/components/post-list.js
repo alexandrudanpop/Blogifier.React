@@ -28,10 +28,6 @@ const PostList = (props) => {
                       ><Link className='nav-link' to={'/post/' + p.title} > {p.title} </Link>
                       </h2>
                       <p>{p.content} </p>
-                      <button className='btn pull-right'>
-                        <Link className='nav-link' to={'/post/' + p.title} > Read More!
-                        </Link>
-                      </button>
                     </div>
                   </div>
                 </div>
