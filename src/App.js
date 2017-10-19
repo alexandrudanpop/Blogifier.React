@@ -83,7 +83,7 @@ class App extends Component {
 
             {/* todo extract header */}
             <Link to={'/'} style={{ textDecoration: 'none' }}>
-            <h1>{this.state.data ? this.state.data.pageTitle : 'Welcome!'}
+            <h1 style={{ color: 'black' }}> {this.state.data ? this.state.data.pageTitle : 'Welcome!'}
               <br />
               <small>{this.state.data ? ' ' + this.state.data.pageDescription : null}</small>
             </h1>
