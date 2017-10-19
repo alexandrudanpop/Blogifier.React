@@ -5,8 +5,9 @@ import './App.css';
 
 import Config from './lib/config'
 
-import PostList from './components/post-list';
+import PostList from './components/post-list'
 import Post from './components/post'
+import SideNav from './components/side-nav'
 
 class App extends Component {
   constructor(props) {
@@ -77,6 +78,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <div className="page-header text-center">
+            <SideNav />
             <h1>{this.state.data ? this.state.data.pageTitle : 'Welcome!'}
               <br />
               <small>{this.state.data ? ' ' + this.state.data.pageDescription : null}</small>
