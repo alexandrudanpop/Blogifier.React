@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Spinner from 'react-spinkit'
+import ScrollUpButton from "react-scroll-up-button";
 import './App.css';
 
 import Config from './lib/config'
@@ -98,6 +99,7 @@ class App extends Component {
             </div>
             : null}
           {this.createRoutes()}
+          <ScrollUpButton/>
         </div>
       </Router>
     );
