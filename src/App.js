@@ -6,9 +6,9 @@ import './App.css';
 
 import Config from './lib/config'
 
+import BlogHeader from './components/blog-header'
 import PostList from './components/post-list'
 import Post from './components/post'
-import SideNav from './components/side-nav'
 
 class App extends Component {
   constructor(props) {
@@ -78,17 +78,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <div className="page-header text-center">
-            <SideNav />
-
-            {/* todo extract header */}
-            <Link to={'/'} style={{ textDecoration: 'none' }}>
-              <h1 style={{ color: 'black' }}> {this.state.data ? this.state.data.pageTitle : 'Welcome!'}
-                <br />
-                <small>{this.state.data ? ' ' + this.state.data.pageDescription : null}</small>
-              </h1>
-            </Link>
-          </div>
+          <BlogHeader data={this.state.data} />
           {this.state.error
             &&
             <div className='alert alert-danger alert-dismissable fade in'>
