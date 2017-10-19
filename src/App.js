@@ -83,23 +83,22 @@ class App extends Component {
 
             {/* todo extract header */}
             <Link to={'/'} style={{ textDecoration: 'none' }}>
-            <h1 style={{ color: 'black' }}> {this.state.data ? this.state.data.pageTitle : 'Welcome!'}
-              <br />
-              <small>{this.state.data ? ' ' + this.state.data.pageDescription : null}</small>
-            </h1>
+              <h1 style={{ color: 'black' }}> {this.state.data ? this.state.data.pageTitle : 'Welcome!'}
+                <br />
+                <small>{this.state.data ? ' ' + this.state.data.pageDescription : null}</small>
+              </h1>
             </Link>
           </div>
           {this.state.error
-            ?
+            &&
             <div className='alert alert-danger alert-dismissable fade in'>
               <a href="" className="close" data-dismiss="alert" aria-label="close">&times;</a>
               <div className='error'>
                 {this.state.error}
               </div>
-            </div>
-            : null}
+            </div>}
           {this.createRoutes()}
-          <ScrollUpButton/>
+          <ScrollUpButton />
         </div>
       </Router>
     );
