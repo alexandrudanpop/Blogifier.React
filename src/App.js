@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Spinner from 'react-spinkit'
 import './App.css';
 
@@ -79,10 +79,14 @@ class App extends Component {
         <div className="App">
           <div className="page-header text-center">
             <SideNav />
+
+            {/* todo extract header */}
+            <Link to={'/'} style={{ textDecoration: 'none' }}>
             <h1>{this.state.data ? this.state.data.pageTitle : 'Welcome!'}
               <br />
               <small>{this.state.data ? ' ' + this.state.data.pageDescription : null}</small>
             </h1>
+            </Link>
           </div>
           {this.state.error
             ?
