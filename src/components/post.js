@@ -40,7 +40,15 @@ export default class Post extends Component {
     if (iframes) {
       for (let i = 0; i < iframes.length; i++) {
         iframes[i].parentNode.setAttribute('class', 'video-container');
+      }
     }
+
+    // make post images responsive
+    const images = document.getElementsByTagName('img')
+    if (images) {
+      for (let i = 0; i < images.length; i++) {
+        images[i].setAttribute('class', 'img-responsive');
+      }
     }
   }
 
