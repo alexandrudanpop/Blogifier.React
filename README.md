@@ -1,2 +1,3 @@
 # Blogifier.React
-Blogifier React theme
+SPA theme for a Blogifier App.
+
