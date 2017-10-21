@@ -34,6 +34,16 @@ export default class Post extends Component {
       })
   }
 
+  componentDidUpdate() {
+    // HTML from posts can have embeded youtube videos that need to be styled for mobile
+    const iframes = document.getElementsByTagName('iframe')
+    if (iframes) {
+      for (let i = 0; i < iframes.length; i++) {
+        iframes[i].parentNode.setAttribute('class', 'video-container');
+    }
+    }
+  }
+
   renderFullPost() {
     if (this.state.fullpost) {
       document.getElementById('fullPostContent').innerHTML = this.state.fullpost.blogPost.content
@@ -55,29 +65,29 @@ export default class Post extends Component {
     return (
       <article className='post-single'>
         <header className='page-cover post-header' style={headerStyle} >
-        <section className="container">
+          <section className="container">
             <h2 className="post-title">{this.props.post.title}</h2>
             <div className="post-meta">
-                <a href="/blog/lex">
-                    {/* todo commented out because looks crappy */}
-                    {/* <img className="post-meta-img" src={Config.api+ this.props.post.avatar} alt={this.props.post.authorName}/> */}
-                    <span className="post-meta-author">{this.props.post.authorName}</span>
-                </a>
-                <br/ >
-                <time className="post-meta-time">{this.props.post.published}</time>
-                
-                {/* todo add categories */}
-                {/* <span className="post-meta-category">
+              <a href="/blog/lex">
+                {/* todo commented out because looks crappy */}
+                {/* <img className="post-meta-img" src={Config.api+ this.props.post.avatar} alt={this.props.post.authorName}/> */}
+                <span className="post-meta-author">{this.props.post.authorName}</span>
+              </a>
+              <br />
+              <time className="post-meta-time">{this.props.post.published}</time>
+
+              {/* todo add categories */}
+              {/* <span className="post-meta-category">
                     in
                             <a href="/blog/lex/asp-net-core">ASP NET Core</a>
                             <a href="/blog/lex/c">C#</a>
                 </span> */}
             </div>
-        </section>
+          </section>
         </header>
 
-          {/* {this.props.post.blogPostId} */}
-          {/* {this.props.id}
+        {/* {this.props.post.blogPostId} */}
+        {/* {this.props.id}
         {this.props.title}
         {this.props.content} */}
         <div className='post-content container'>
