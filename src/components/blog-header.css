@@ -1,0 +1,20 @@
+a.blog-header:link
+{
+   color: #0a1528;
+   text-decoration: none;
+}
+a.blog-header:visited
+{
+   color: #0a1528;
+   text-decoration: none;
+}
+a.blog-header:hover
+{
+   color: #274e91;
+   text-decoration: none;
+}
+a.blog-header:active
+{
+   color: #0a1528;
+   text-decoration: none;
+}
