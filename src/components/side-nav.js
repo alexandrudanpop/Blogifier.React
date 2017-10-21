@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import './side-nav.css'
 
 class SideNav extends Component {
@@ -29,10 +30,10 @@ class SideNav extends Component {
     return (
       <div>
         <div id='mySidenav' className='sidenav' style={style}>
-          <a href='#' className='closebtn' onClick={this.closeNav}>&times;</a>
-          <a href='#'>Home</a>
-          <a href='#'>Categories</a>
-          <a href='#'>Search</a>
+          <a className='closebtn' onClick={this.closeNav}>&times;</a>
+          <Link to='/' onClick={this.closeNav}>Home</Link>
+          <Link to='/categories' onClick={this.closeNav}>Categories</Link>
+          <Link to='/search' onClick={this.closeNav}>Search</Link>
         </div>
 
         <span className='blog-header-toggle' onClick={this.openNav}>☰</span>
