@@ -10,6 +10,7 @@
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  cursor: pointer;
 }
 
 /* The navigation menu links */
@@ -53,4 +54,12 @@
   font-size: 30px;
   margin-top: 15px;
   margin-right: 15px;
+}
+
+@media screen and (max-width: 450px) {
+  .blog-header-toggle {
+    font-size: 20px;
+    top: 0;
+    right: 40%;
+  }
 }
