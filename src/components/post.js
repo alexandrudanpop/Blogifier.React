@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Spinner from 'react-spinkit'
-
+import PropTypes from 'prop-types'
 import Config from '../lib/config'
 
 export default class Post extends Component {
@@ -14,24 +14,7 @@ export default class Post extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0)
-    // if found in store do not make api call
-    const foundPost = this.props.storedPosts.find(sp => sp.id === this.props.post.slug)
-    if (foundPost) {
-      this.setState({ fullpost: foundPost.post })
-      return
-    }
-
-    fetch(Config.api + "/blogifier/api/public/posts/post/" + this.props.post.slug)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        this.setState({ fullpost: data })
-        this.props.addPostToStore({ id: this.props.post.slug, post: data })
-      })
-      .catch(err => {
-        console.log(err)
-        this.setState({ error: err })
-      })
+    this.loadFullPost()
   }
 
   componentDidUpdate() {
@@ -52,37 +35,52 @@ export default class Post extends Component {
     }
   }
 
-  renderFullPost() {
-    if (this.state.fullpost) {
-      document.getElementById('fullPostContent').innerHTML = this.state.fullpost.blogPost.content
+  loadFullPost() {
+    // if found in store do not make api call
+    const foundPost = this.props.storedPosts.find(sp => sp.id === this.props.post.slug)
+    if (foundPost) {
+      this.setState({ fullpost: foundPost.post })
       return
     }
 
-    return (
-      <div className='centered'>
-        <Spinner name="ball-scale-ripple" color="blue" fadeIn='half' />
-      </div>
-    )
+    fetch(`${Config.api}/blogifier/api/public/posts/post/${this.props.post.slug}`)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ fullpost: data })
+        this.props.addPostToStore({ id: this.props.post.slug, post: data })
+      })
+      .catch(err => {
+        this.setState({ error: err })
+      })
+  }
+
+  renderFullPost() {
+    const container = document.getElementById('fullPostContent')
+    if (container) {
+      container.innerHTML = this.state.fullpost.blogPost.content
+    }
   }
 
   render() {
+    const post = this.props.post
+
     const headerStyle = {
-      backgroundImage: `url(${Config.api + this.props.post.image})`
+      backgroundImage: `url(${Config.api + post.image})`
     }
 
     return (
       <article className='post-single'>
         <header className='page-cover post-header' style={headerStyle} >
           <section className="container">
-            <h2 className="post-title">{this.props.post.title}</h2>
+            <h2 className="post-title">{post.title}</h2>
             <div className="post-meta">
               <a href="/blog/lex">
                 {/* todo commented out because looks crappy */}
                 {/* <img className="post-meta-img" src={Config.api+ this.props.post.avatar} alt={this.props.post.authorName}/> */}
-                <span className="post-meta-author">{this.props.post.authorName}</span>
+                <span className="post-meta-author">{post.authorName}</span>
               </a>
               <br />
-              <time className="post-meta-time">{this.props.post.published}</time>
+              <time className="post-meta-time">{post.published}</time>
 
               {/* todo add categories */}
               {/* <span className="post-meta-category">
@@ -99,10 +97,29 @@ export default class Post extends Component {
         {this.props.title}
         {this.props.content} */}
         <div className='post-content container'>
-          <div id='fullPostContent'> </div>
-          {this.renderFullPost()}
+          <div id='fullPostContent' />
+          {this.state.fullpost
+            ? this.renderFullPost()
+            :
+            <div className='centered'>
+              <Spinner name="ball-scale-ripple" color="blue" fadeIn='half' />
+            </div>
+          }
         </div>
       </article>
     )
   }
+}
+
+Post.propTypes = {
+  storedPosts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired
+  })).isRequired,
+  addPostToStore: PropTypes.func.isRequired,
+  post: PropTypes.shape({
+    image: PropTypes.string,
+    authorName: PropTypes.string,
+    published: PropTypes.string,
+    slug: PropTypes.string
+  }).isRequired
 }

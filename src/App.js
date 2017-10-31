@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Spinner from 'react-spinkit'
-import ScrollUpButton from "react-scroll-up-button";
-import './App.css';
+import ScrollUpButton from "react-scroll-up-button"
+import './App.css'
 
 import Config from './lib/config'
 
@@ -14,6 +14,8 @@ class App extends Component {
   constructor(props) {
     super(props)
 
+    this.addPostToStore = this.addPostToStore.bind(this)
+
     this.state = {
       data: null,
       error: null,
@@ -22,14 +24,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(Config.api + "/blogifier/api/public/posts")
+    fetch(`${Config.api}/blogifier/api/public/posts`)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
-        this.setState({ data: data, error: null })
+        this.setState({ data, error: null })
       })
-      .catch(err => {
-        console.log(err)
+      .catch(() => {
         this.setState({ error: '¯\\_(ツ)_/¯ Ups.. Something went wrong.' })
       })
   }
@@ -49,7 +49,7 @@ class App extends Component {
               <Post
                 post={this.state.data.posts.find(p => p.title === match.params.title)}
                 storedPosts={this.state.storedPosts}
-                addPostToStore={this.addPostToStore.bind(this)}
+                addPostToStore={this.addPostToStore}
               />}
           />
         </div>
@@ -68,7 +68,7 @@ class App extends Component {
     }
 
     if (!this.state.storedPosts.find(p => p.id === newPost.id)) {
-      let storedPostsCopy = [...this.state.storedPosts]
+      const storedPostsCopy = [...this.state.storedPosts]
       storedPostsCopy.push(newPost)
       this.setState({ storedPosts: storedPostsCopy })
     }
@@ -78,7 +78,8 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <BlogHeader data={this.state.data} />
+          {/* todo move all presentation logic in a container comp */}
+          {this.state.data && <BlogHeader data={this.state.data} />}
           {this.state.error
             &&
             <div className='alert alert-danger alert-dismissable fade in'>

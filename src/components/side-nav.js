@@ -30,13 +30,13 @@ class SideNav extends Component {
     return (
       <div>
         <div id='mySidenav' className='sidenav' style={style}>
-          <a className='closebtn' onClick={this.closeNav}>&times;</a>
+          <a className='closebtn' role='presentation' onClick={this.closeNav}>&times;</a>
           <Link to='/' onClick={this.closeNav}>Home</Link>
           <Link to='/categories' onClick={this.closeNav}>Categories</Link>
           <Link to='/search' onClick={this.closeNav}>Search</Link>
         </div>
 
-        <span className='blog-header-toggle' onClick={this.openNav}>☰</span>
+        <span role='presentation' className='blog-header-toggle' onClick={this.openNav}>☰</span>
       </div>
     );
   }
