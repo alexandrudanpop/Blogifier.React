@@ -6,20 +6,15 @@ class SideNav extends Component {
   constructor(props) {
     super(props)
 
-    this.openNav = this.openNav.bind(this)
-    this.closeNav = this.closeNav.bind(this)
+    this.toggle = this.toggle.bind(this)
 
     this.state = {
       toggled: false
     }
   }
 
-  openNav() {
-    this.setState({ toggled: true })
-  }
-
-  closeNav() {
-    this.setState({ toggled: false })
+  toggle() {
+    this.setState({ toggled: !this.state.toggled })
   }
 
   render() {
@@ -30,13 +25,13 @@ class SideNav extends Component {
     return (
       <div>
         <div id='mySidenav' className='sidenav' style={style}>
-          <a className='closebtn' role='presentation' onClick={this.closeNav}>&times;</a>
+          <a className='closebtn' role='presentation' onClick={this.toggle}>&times;</a>
           <Link to='/' onClick={this.closeNav}>Home</Link>
           <Link to='/categories' onClick={this.closeNav}>Categories</Link>
           <Link to='/search' onClick={this.closeNav}>Search</Link>
         </div>
 
-        <span role='presentation' className='blog-header-toggle' onClick={this.openNav}>☰</span>
+        <span role='presentation' className='blog-header-toggle' onClick={this.toggle}>☰</span>
       </div>
     );
   }
